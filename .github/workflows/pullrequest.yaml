@@ -61,7 +61,7 @@ jobs:
 
       - name: Terragrunt init
         run: |
-          pwd
+          ls
           terragrunt init -auto-approve 
 
 
