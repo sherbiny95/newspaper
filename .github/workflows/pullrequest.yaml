@@ -59,10 +59,10 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           mask-aws-account-id: false
 
-      - name: Terragrunt init
-        run: |
-          terragrunt init --terragrunt-non-interactive
-
+      # # Uncomment this block when needing to create new state file
+      # - name: Terragrunt init
+      #   run: |
+      #     terragrunt init --terragrunt-non-interactive
 
       - name: Terragrunt plan
         uses: cds-snc/terraform-plan@v3
