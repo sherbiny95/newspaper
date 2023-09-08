@@ -38,6 +38,9 @@ jobs:
   plan:
     name: Pull Request Plan
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform
 
     steps:
       - name: Clone Repository
@@ -45,11 +48,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup terraform/terragrunt tools
-        uses: cds-snc/terraform-tools-setup@v1
-        env:
-          TERRAFORM_VERSION: 1.5.7
-          TERRAGRUNT_VERSION: 0.48.0
+      # - name: Setup terraform/terragrunt tools
+      #   uses: cds-snc/terraform-tools-setup@v1
+      #   env:
+      #     TERRAFORM_VERSION: 1.5.7
+      #     TERRAGRUNT_VERSION: 0.48.0
 
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -64,11 +67,10 @@ jobs:
       #   run: |
       #     terragrunt init --terragrunt-non-interactive
 
-      - name: Terragrunt plan
+      - name: Terraform plan
         run: |
-          cd terraform
-          terragrunt init --terragrunt-non-interactive
-          terragrunt plan
+          terraform init -input=false 
+          terraform plan -input=false
 
       # - name: Terragrunt plan
       #   uses: cds-snc/terraform-plan@v3
