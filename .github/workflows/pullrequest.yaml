@@ -66,6 +66,7 @@ jobs:
 
       - name: Terragrunt plan
         run: |
+          cd terraform
           terragrunt init --terragrunt-non-interactive
           terragrunt plan
 
