@@ -9,6 +9,7 @@ remote_state {
     key     = "newspaper/terraform.tfstate"
     region  = "eu-west-1"
     encrypt = true
+    create         = true 
   }
 }
 

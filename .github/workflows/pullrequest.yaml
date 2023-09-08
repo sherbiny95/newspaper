@@ -59,9 +59,9 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           mask-aws-account-id: false
 
-      - name: Terragrunt init
-        run: |
-          terragrunt init -auto-approve 
+      # - name: Terragrunt init
+      #   run: |
+      #     terragrunt init -auto-approve 
 
       - name: Terragrunt plan
         uses: cds-snc/terraform-plan@v3
