@@ -6,12 +6,4 @@ resource "aws_dynamodb_table" "newspaper_articles" {
     name = "Title"
     type = "S"
   }
-  attribute {
-    name = "Date"
-    type = "S"
-  }
-  attribute {
-    name = "Description"
-    type = "S"
-  }
 }
