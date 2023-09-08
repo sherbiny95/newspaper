@@ -61,7 +61,7 @@ jobs:
 
       - name: Terragrunt init
         run: |
-          terragrunt init -input=false 
+          terragrunt init -auto-approve 
 
 
       - name: Terragrunt plan
