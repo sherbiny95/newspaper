@@ -61,7 +61,6 @@ jobs:
 
       - name: Terragrunt init
         run: |
-          cd terraform
           terragrunt init -auto-approve 
 
       - name: Terragrunt plan
