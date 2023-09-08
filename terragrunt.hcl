@@ -10,7 +10,6 @@ remote_state {
     region  = "eu-west-1"
     encrypt = true
   }
-   commands = ["apply", "plan", "destroy"]
 }
 
 generate "provider" {
