@@ -64,10 +64,14 @@ jobs:
       #   run: |
       #     terragrunt init --terragrunt-non-interactive
 
-      - name: Terragrunt plan
-        uses: cds-snc/terraform-plan@v3
-        with:
-          comment-delete: true
-          terragrunt: true
-          skip-conftest: true
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Terragrunt init
+        run: |
+          terragrunt plan --terragrunt-non-interactive
+
+      # - name: Terragrunt plan
+      #   uses: cds-snc/terraform-plan@v3
+      #   with:
+      #     comment-delete: true
+      #     terragrunt: true
+      #     skip-conftest: true
+      #     github-token: "${{ secrets.GITHUB_TOKEN }}"
