@@ -59,13 +59,10 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           mask-aws-account-id: false
 
-      - name: Sts GetCallerIdentity
-        run: |
-          aws sts get-caller-identity
-
       - name: Terragrunt init
         run: |
-          terragrunt init -auto-approve 
+          terragrunt init -input=false 
+
 
       - name: Terragrunt plan
         uses: cds-snc/terraform-plan@v3

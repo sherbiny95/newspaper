@@ -6,10 +6,10 @@ remote_state {
   }
   config = {
     bucket  = "newspaper-state-${get_aws_account_id()}"
-    key     = "newspaper/terraform.tfstate"
+    key     = "terraform.tfstate"
     region  = "eu-west-1"
     encrypt = true
-    create         = true 
+    dynamodb_table  = "newspaper-state-${get_aws_account_id()}-locktable"
   }
 }
 
