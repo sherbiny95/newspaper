@@ -64,9 +64,10 @@ jobs:
       #   run: |
       #     terragrunt init --terragrunt-non-interactive
 
-      - name: Terragrunt init
+      - name: Terragrunt plan
         run: |
-          terragrunt plan --terragrunt-non-interactive
+          terragrunt init --terragrunt-non-interactive
+          terragrunt plan
 
       # - name: Terragrunt plan
       #   uses: cds-snc/terraform-plan@v3
