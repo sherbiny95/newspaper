@@ -1,11 +1,3 @@
-terraform {
-  before_hook "before_hook" {
-    commands = ["apply", "plan"]
-  }
-
-  source = "${path_relative_from_include()}/terraform//${path_relative_to_include()}"
-}
-
 remote_state {
   backend = "s3"
   generate = {
