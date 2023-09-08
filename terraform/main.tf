@@ -11,7 +11,7 @@ terraform {
   }
   backend "s3" {
     region         = "eu-west-1"
-    bucket         = "newspaper-state-${get_aws_account_id()}"
+    bucket         = "newspaper-dev-state"
     key            = "terraform.tfstate"
   }
 }
