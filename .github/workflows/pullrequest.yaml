@@ -32,7 +32,7 @@ jobs:
         with:
           working_directory: ""
           tfsec_formats: sarif
-          tfsec_args: --concise-output --no-ignores --force-all-dirs--minimum-severity HIGH
+          tfsec_args: --concise-output --no-ignores --force-all-dirs --minimum-severity HIGH
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
   plan:
@@ -48,8 +48,8 @@ jobs:
       - name: Setup terraform/terragrunt tools
         uses: cds-snc/terraform-tools-setup@v1
         env:
-          TERRAFORM_VERSION: 1.5.3
-          TERRAGRUNT_VERSION: 0.45.10
+          TERRAFORM_VERSION: 1.5.7
+          TERRAGRUNT_VERSION: 0.48.0
 
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -58,6 +58,11 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
           mask-aws-account-id: false
+
+      - name: Terragrunt init
+        run: |
+          cd terraform
+          terragrunt init -auto-approve 
 
       - name: Terragrunt plan
         uses: cds-snc/terraform-plan@v3
