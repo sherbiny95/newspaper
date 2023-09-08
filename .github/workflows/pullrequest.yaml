@@ -67,6 +67,7 @@ jobs:
       - name: Terragrunt plan
         uses: cds-snc/terraform-plan@v3
         with:
+          directory: ./terraform
           comment-delete: true
           terragrunt: true
           skip-conftest: true

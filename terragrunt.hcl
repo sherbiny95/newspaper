@@ -10,7 +10,6 @@ remote_state {
     region  = "eu-west-1"
     encrypt = true
     dynamodb_table  = "newspaper-state-${get_aws_account_id()}-locktable"
-    write_block = "debug"
   }
 }
 
