@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "news" {
   origin {
-    domain_name = "${aws_api_gateway_rest_api.news_api.id}.${data.aws_region.current.name}.amazonaws.com"
+    domain_name = "${aws_api_gateway_rest_api.news_api.id}.execute-api.${data.aws_region.current.name}.amazonaws.com"
     origin_id   = "api_gateway_origin"
   }
 
