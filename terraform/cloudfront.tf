@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "news" {
   origin {
-    domain_name = replace(aws_api_gateway_deployment.deployment.invoke_url, "/^https?://([^/]*).*/", "$1")
+    domain_name = replace(aws_api_gateway_deployment.news_deployment.invoke_url, "/^https?://([^/]*).*/", "$1")
     origin_id   = "apigw"
     origin_path = "/${var.stage_name}"
   }
