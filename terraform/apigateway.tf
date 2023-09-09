@@ -59,11 +59,10 @@ resource "aws_api_gateway_deployment" "news_deployment" {
     redeployment = sha1(jsonencode([
       aws_api_gateway_resource.news,
       aws_api_gateway_method.get_news,
-      aws_api_gateway_resource.newsitem,
       aws_api_gateway_integration.news_lambda_integration,
-      aws_api_gateway_integration.new_item_lambda_integration,
+      aws_api_gateway_resource.newsitem,
       aws_api_gateway_method.post_newsitem,
-      aws_api_gateway_rest_api.news_api
+      aws_api_gateway_integration.new_item_lambda_integration
     ]))
   }
   stage_name = var.stage_name
