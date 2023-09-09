@@ -76,9 +76,12 @@ resource "aws_api_gateway_deployment" "news_deployment" {
   }
 }
 
-
 resource "aws_api_gateway_stage" "dev" {
   deployment_id = aws_api_gateway_deployment.news_deployment.id
   rest_api_id   = aws_api_gateway_rest_api.news_api.id
   stage_name    = var.stage_name
+}
+
+resource "aws_api_gateway_account" "logging" {
+  cloudwatch_role_arn = aws_iam_role.cloudwatch.arn
 }
