@@ -56,7 +56,7 @@ resource "aws_api_gateway_integration_response" "news_lambda_integration_respons
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = "'*'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
-    "method.response.header.Access-Control-Allow-Headers" = "'*'"
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
 }
 
@@ -106,7 +106,7 @@ resource "aws_api_gateway_integration_response" "news_cors_integration_response_
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = "'*'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
-    "method.response.header.Access-Control-Allow-Headers" = "'*'"
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
 }
 
