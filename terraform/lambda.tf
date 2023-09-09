@@ -1,7 +1,7 @@
 data "archive_file" "python_build" {
   type        = "zip"
   source_dir  = "${path.module}/scripts/lambda-news"
-  output_path = "${path.module}/scripts/lambda-news"
+  output_path = "${path.module}/scripts/lambda-news.zip"
 }
 
 module "lambda_news" {
