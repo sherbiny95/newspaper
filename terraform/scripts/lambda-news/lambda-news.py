@@ -24,7 +24,7 @@ def get_news():
 def post_news(body):
     try:
         news_item = json.loads(body)
-        if 'date' not in news_item or 'title' not in news_item or 'description' not in news_item:
+        if 'date' not in news_item or 'Title' not in news_item or 'description' not in news_item:
             return {
                 'statusCode': 400,
                 'body': json.dumps('Invalid JSON format')
