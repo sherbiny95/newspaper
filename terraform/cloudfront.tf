@@ -8,18 +8,7 @@ resource "aws_cloudfront_distribution" "news" {
   enabled         = true
   is_ipv6_enabled = true
 
-#   default_cache_behavior {
-#     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-#     cached_methods   = ["GET", "HEAD", "OPTIONS"]
-#     target_origin_id = "api_gateway_origin"
-#     viewer_protocol_policy = "redirect-to-https"
-#     min_ttl                = 0
-#     default_ttl            = 3600
-#     max_ttl                = 86400
-#   }
-
-  ordered_cache_behavior {
-    path_pattern = "/news"
+  default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "apigw"
@@ -27,13 +16,18 @@ resource "aws_cloudfront_distribution" "news" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
-    forwarded_values {
-        query_string = true
-        cookies {
-            forward = "all"
-            }
-            }
   }
+
+#   ordered_cache_behavior {
+#     path_pattern = "/news"
+#     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+#     cached_methods   = ["GET", "HEAD", "OPTIONS"]
+#     target_origin_id = "apigw"
+#     viewer_protocol_policy = "redirect-to-https"
+#     min_ttl                = 0
+#     default_ttl            = 3600
+#     max_ttl                = 86400
+#   }
 
   ordered_cache_behavior {
     path_pattern = "/newsitem"
@@ -44,12 +38,6 @@ resource "aws_cloudfront_distribution" "news" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
-    forwarded_values {
-        query_string = true
-        cookies {
-            forward = "all"
-            }
-            }
   }
 
   restrictions {
