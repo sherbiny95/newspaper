@@ -46,3 +46,20 @@ data "aws_iam_policy_document" "cloudwatch" {
     resources = ["*"]
   }
 }
+
+data "aws_iam_policy_document" "s3_react_app" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${module.s3_react_app.s3_bucket_arn}/*"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
+    condition {
+      test     = "StringEquals"
+      values   = [aws_cloudfront_distribution.news.arn]
+      variable = "AWS:SourceArn"
+    }
+  }
+}

@@ -62,3 +62,29 @@ jobs:
         run: |-
           terraform init -input=false 
           terraform apply --auto-approve
+
+  deployreact:
+    defaults:
+      run:
+        working-directory: react-app/newspaper
+
+    name: Deploy React App
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::034421805275:role/GitHubAction-AssumeRoleWithAction
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: deploy app
+        run: |-
+          npm clean-install
+          npm run build
+          aws s3 sync build s3://newspaper-app-034421805275
+          rm -r build
