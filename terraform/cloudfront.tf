@@ -11,34 +11,34 @@ resource "aws_cloudfront_distribution" "news" {
     origin_id                = module.s3_react_app.s3_bucket_id
     origin_access_control_id = aws_cloudfront_origin_access_control.news.id
   }
-  enabled         = true
-  price_class         = "PriceClass_100"
+  enabled     = true
+  price_class = "PriceClass_100"
 
 
   default_cache_behavior {
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD", "OPTIONS"]
-    target_origin_id = module.s3_react_app.s3_bucket_id
+    allowed_methods        = ["GET", "HEAD", "OPTIONS"]
+    cached_methods         = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id       = module.s3_react_app.s3_bucket_id
     viewer_protocol_policy = "redirect-to-https"
     forwarded_values {
-      query_string = false  # Do not forward query strings
+      query_string = false # Do not forward query strings
       cookies {
-        forward = "none"   # Do not forward cookies
+        forward = "none" # Do not forward cookies
       }
       headers = ["Origin"]
     }
   }
 
   ordered_cache_behavior {
-    path_pattern = "/newsitem"
-    allowed_methods  = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
-    cached_methods   = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
-    target_origin_id = module.s3_react_app.s3_bucket_id
+    path_pattern           = "/newsitem"
+    allowed_methods        = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
+    cached_methods         = ["HEAD", "GET", "OPTIONS"]
+    target_origin_id       = module.s3_react_app.s3_bucket_id
     viewer_protocol_policy = "redirect-to-https"
     forwarded_values {
-      query_string = false  # Do not forward query strings
+      query_string = false # Do not forward query strings
       cookies {
-        forward = "none"   # Do not forward cookies
+        forward = "none" # Do not forward cookies
       }
       headers = ["Origin"]
     }

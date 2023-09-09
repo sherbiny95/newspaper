@@ -31,7 +31,7 @@ resource "aws_api_gateway_method_response" "get_news_response_200" {
   status_code = "200"
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true,
+    "method.response.header.Access-Control-Allow-Origin"  = true,
     "method.response.header.Access-Control-Allow-Methods" = true,
     "method.response.header.Access-Control-Allow-Headers" = true
   }
@@ -54,7 +54,7 @@ resource "aws_api_gateway_integration_response" "news_lambda_integration_respons
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = "'*'",
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
@@ -63,10 +63,10 @@ resource "aws_api_gateway_integration_response" "news_lambda_integration_respons
 # CORS
 
 resource "aws_api_gateway_method" "news_cors_options" {
-  rest_api_id      = aws_api_gateway_rest_api.news_api.id
-  resource_id      = aws_api_gateway_resource.news.id
-  http_method      = "OPTIONS"
-  authorization    = "NONE"
+  rest_api_id   = aws_api_gateway_rest_api.news_api.id
+  resource_id   = aws_api_gateway_resource.news.id
+  http_method   = "OPTIONS"
+  authorization = "NONE"
 }
 
 resource "aws_api_gateway_method_response" "news_cors_response_200" {
@@ -76,7 +76,7 @@ resource "aws_api_gateway_method_response" "news_cors_response_200" {
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true,
+    "method.response.header.Access-Control-Allow-Origin"  = true,
     "method.response.header.Access-Control-Allow-Methods" = true,
     "method.response.header.Access-Control-Allow-Headers" = true
   }
@@ -104,7 +104,7 @@ resource "aws_api_gateway_integration_response" "news_cors_integration_response_
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = "'*'",
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
@@ -134,7 +134,7 @@ resource "aws_api_gateway_method_response" "post_newsitem_response_200" {
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true,
+    "method.response.header.Access-Control-Allow-Origin"  = true,
     "method.response.header.Access-Control-Allow-Methods" = true,
     "method.response.header.Access-Control-Allow-Headers" = true
   }
@@ -157,7 +157,7 @@ resource "aws_api_gateway_integration_response" "news_item__lambda_integration_r
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = "'*'",
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'*'"
   }
@@ -166,10 +166,10 @@ resource "aws_api_gateway_integration_response" "news_item__lambda_integration_r
 # CORS
 
 resource "aws_api_gateway_method" "newsitem_cors_options" {
-  rest_api_id      = aws_api_gateway_rest_api.news_api.id
-  resource_id      = aws_api_gateway_resource.newsitem.id
-  http_method      = "OPTIONS"
-  authorization    = "NONE"
+  rest_api_id   = aws_api_gateway_rest_api.news_api.id
+  resource_id   = aws_api_gateway_resource.newsitem.id
+  http_method   = "OPTIONS"
+  authorization = "NONE"
 }
 
 resource "aws_api_gateway_method_response" "newsitem_cors_response_200" {
@@ -179,7 +179,7 @@ resource "aws_api_gateway_method_response" "newsitem_cors_response_200" {
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true,
+    "method.response.header.Access-Control-Allow-Origin"  = true,
     "method.response.header.Access-Control-Allow-Methods" = true,
     "method.response.header.Access-Control-Allow-Headers" = true
   }
@@ -207,7 +207,7 @@ resource "aws_api_gateway_integration_response" "newsitem_cors_integration_respo
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = "'*'",
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'*'"
   }
