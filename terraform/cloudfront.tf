@@ -24,13 +24,14 @@ resource "aws_cloudfront_distribution" "news" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
-  }
     forwarded_values {
-      query_string = false 
+      query_string = false
       cookies {
-        forward = "none" 
+        forward = "none"
       }
     }
+  }
+
 
   ordered_cache_behavior {
     path_pattern           = "/newsitem"
@@ -38,6 +39,9 @@ resource "aws_cloudfront_distribution" "news" {
     cached_methods         = ["HEAD", "GET", "OPTIONS"]
     target_origin_id       = module.s3_react_app.s3_bucket_id
     viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
     forwarded_values {
       query_string = false
       cookies {
