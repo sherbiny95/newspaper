@@ -25,16 +25,11 @@ resource "aws_cloudfront_distribution" "news" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
   }
 
 
   ordered_cache_behavior {
+    cache_policy_id        = "658327ea-f89d-4fab-a63d-7e88639e58f6"
     path_pattern           = "/newsitem"
     allowed_methods        = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
     cached_methods         = ["HEAD", "GET", "OPTIONS"]
@@ -43,12 +38,7 @@ resource "aws_cloudfront_distribution" "news" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
+
   }
 
   restrictions {
