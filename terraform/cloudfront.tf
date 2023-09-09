@@ -1,17 +1,18 @@
-resource "aws_cloudfront_origin_access_control" "news" {
-  name                              = "default"
-  origin_access_control_origin_type = "s3"
-  signing_behavior                  = "always"
-  signing_protocol                  = "sigv4"
-}
+# resource "aws_cloudfront_origin_access_control" "news" {
+#   name                              = "default"
+#   origin_access_control_origin_type = "s3"
+#   signing_behavior                  = "always"
+#   signing_protocol                  = "sigv4"
+# }
 
 resource "aws_cloudfront_distribution" "news" {
   origin {
     domain_name              = module.s3_react_app.s3_bucket_bucket_regional_domain_name
     origin_id                = module.s3_react_app.s3_bucket_id
-    origin_access_control_id = aws_cloudfront_origin_access_control.news.id
+    # origin_access_control_id = aws_cloudfront_origin_access_control.news.id
   }
   enabled     = true
+  default_root_object = "index.html"
   price_class = "PriceClass_100"
 
 
@@ -20,12 +21,15 @@ resource "aws_cloudfront_distribution" "news" {
     cached_methods         = ["GET", "HEAD", "OPTIONS"]
     target_origin_id       = module.s3_react_app.s3_bucket_id
     viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
     forwarded_values {
-      query_string = false # Do not forward query strings
+      query_string = false 
       cookies {
-        forward = "none" # Do not forward cookies
+        forward = "none" 
       }
-      headers = ["Origin"]
     }
   }
 
@@ -36,11 +40,10 @@ resource "aws_cloudfront_distribution" "news" {
     target_origin_id       = module.s3_react_app.s3_bucket_id
     viewer_protocol_policy = "redirect-to-https"
     forwarded_values {
-      query_string = false # Do not forward query strings
+      query_string = false
       cookies {
-        forward = "none" # Do not forward cookies
+        forward = "none"
       }
-      headers = ["Origin"]
     }
   }
 
