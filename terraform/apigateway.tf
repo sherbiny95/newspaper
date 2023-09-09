@@ -51,7 +51,6 @@ resource "aws_api_gateway_deployment" "news_deployment" {
         aws_api_gateway_method.get_news,
         aws_api_gateway_resource.newsitem,
         aws_api_gateway_method.post_newsitem,
-        aws_api_gateway_stage.dev,
         aws_api_gateway_rest_api.news_api
     ]))
     }
