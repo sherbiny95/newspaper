@@ -65,6 +65,10 @@ resource "aws_api_gateway_deployment" "news_deployment" {
       aws_api_gateway_integration.new_item_lambda_integration
     ]))
   }
+  depends_on = [
+    aws_api_gateway_method.get_news,
+    aws_api_gateway_integration.news_lambda_integration
+  ]
   stage_name = var.stage_name
 
   lifecycle {
