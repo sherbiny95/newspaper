@@ -32,7 +32,7 @@ resource "aws_api_gateway_integration" "news_lambda_integration" {
 
 resource "aws_api_gateway_resource" "newsitem" {
   rest_api_id = aws_api_gateway_rest_api.news_api.id
-  parent_id   =  aws_api_gateway_rest_api.news_api.root_resource_id
+  parent_id   = aws_api_gateway_rest_api.news_api.root_resource_id
   path_part   = "newsitem"
 }
 
@@ -82,5 +82,3 @@ resource "aws_api_gateway_stage" "dev" {
   rest_api_id   = aws_api_gateway_rest_api.news_api.id
   stage_name    = var.stage_name
 }
-
-curl -X POST -H "Content-Type: application/json" -d '{"date":"2023-09-09", "title":"Test", "description":"This is a test"}' https://y15bdx7eij.execute-api.eu-west-1.amazonaws.com/dev/newsitem
