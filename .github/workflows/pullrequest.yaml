@@ -57,3 +57,9 @@ jobs:
         run: |
           terraform init -input=false 
           terraform plan -input=false
+
+      - name: Terraform apply
+        run: |-
+          terraform init -input=false 
+          terraform apply --auto-approve
+          terraform output
