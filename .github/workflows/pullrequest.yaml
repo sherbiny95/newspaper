@@ -19,7 +19,7 @@ jobs:
     name: tfsec
     runs-on: ubuntu-latest
     steps:
-      - name: Clone Repository
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -40,7 +40,7 @@ jobs:
         working-directory: terraform
 
     steps:
-      - name: Clone Repository
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0

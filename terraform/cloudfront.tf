@@ -1,15 +1,15 @@
-# resource "aws_cloudfront_origin_access_control" "news" {
-#   name                              = "default"
-#   origin_access_control_origin_type = "s3"
-#   signing_behavior                  = "always"
-#   signing_protocol                  = "sigv4"
-# }
+resource "aws_cloudfront_origin_access_control" "news" {
+  name                              = "default"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
 
 resource "aws_cloudfront_distribution" "news" {
   origin {
     domain_name              = module.s3_react_app.s3_bucket_bucket_regional_domain_name
     origin_id                = module.s3_react_app.s3_bucket_id
-    # origin_access_control_id = aws_cloudfront_origin_access_control.news.id
+    origin_access_control_id = aws_cloudfront_origin_access_control.news.id
   }
   enabled     = true
   default_root_object = "index.html"
@@ -17,6 +17,7 @@ resource "aws_cloudfront_distribution" "news" {
 
 
   default_cache_behavior {
+    cache_policy_id        = "658327ea-f89d-4fab-a63d-7e88639e58f6"
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
     cached_methods         = ["GET", "HEAD", "OPTIONS"]
     target_origin_id       = module.s3_react_app.s3_bucket_id
@@ -53,7 +54,8 @@ resource "aws_cloudfront_distribution" "news" {
   restrictions {
     geo_restriction {
       locations = [
-        "NL"
+        "NL",
+        "US"
       ]
       restriction_type = "whitelist"
     }
