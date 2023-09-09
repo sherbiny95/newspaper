@@ -48,8 +48,8 @@ module "lambda_get" {
   source  = "terraform-aws-modules/lambda/aws"
   version = "6.0.0"
 
-  function_name  = "news"
-  role_name      = "news"
+  function_name  = "news-get"
+  role_name      = "news-get"
   handler        = "lambda-get.lambda_handler"
   runtime        = "python3.8"
   create_package = false
