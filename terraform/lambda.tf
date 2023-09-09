@@ -70,7 +70,7 @@ module "lambda_get" {
   number_of_policy_jsons = 1
 }
 
-resource "aws_lambda_permission" "invoke_lambda_api" {
+resource "aws_lambda_permission" "invoke_lambda_get_api" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = module.lambda_get.lambda_function_name
