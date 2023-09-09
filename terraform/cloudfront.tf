@@ -31,8 +31,8 @@ resource "aws_cloudfront_distribution" "news" {
 
   ordered_cache_behavior {
     path_pattern = "/newsitem"
-    allowed_methods  = ["POST", "HEAD", "OPTIONS"]
-    cached_methods   = ["POST", "HEAD", "OPTIONS"]
+    allowed_methods  = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
+    cached_methods   = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
     target_origin_id = module.s3_react_app.s3_bucket_id
     viewer_protocol_policy = "redirect-to-https"
     forwarded_values {
