@@ -83,5 +83,5 @@ resource "aws_api_gateway_stage" "dev" {
 }
 
 resource "aws_api_gateway_account" "logging" {
-  cloudwatch_role_arn = aws_iam_role.cloudwatch.arn
+  cloudwatch_role_arn = aws_iam_role.api_cloudwatch.arn
 }
