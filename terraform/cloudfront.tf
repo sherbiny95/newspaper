@@ -31,7 +31,6 @@ resource "aws_cloudfront_distribution" "news" {
         forward = "none" 
       }
     }
-  }
 
   ordered_cache_behavior {
     path_pattern           = "/newsitem"
