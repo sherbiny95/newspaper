@@ -8,7 +8,6 @@ resource "aws_cloudfront_distribution" "news" {
   is_ipv6_enabled = true
 
   default_cache_behavior {
-    path_pattern = "/news"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "api_gateway_origin"
@@ -19,6 +18,7 @@ resource "aws_cloudfront_distribution" "news" {
   }
 
   ordered_cache_behavior {
+    path_pattern = "/newsitem"
     allowed_methods  = ["POST", "HEAD", "OPTIONS"]
     cached_methods   = ["POST", "HEAD", "OPTIONS"]
     target_origin_id = "api_gateway_origin"

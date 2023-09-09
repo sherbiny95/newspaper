@@ -48,7 +48,7 @@ def lambda_handler(event, context):
     
     if http_method == 'GET' and path == '/news':
         return get_news()
-    elif http_method == 'POST' and :
+    elif http_method == 'POST' and path == '/newsitem':
         return post_news(event['body'])
     else:
         return {
