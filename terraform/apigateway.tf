@@ -1,45 +1,70 @@
-resource "aws_api_gateway_rest_api" "example" {
-  body = jsonencode({
-    openapi = "3.0.1"
-    info = {
-      title   = "example"
-      version = "1.0"
-    }
-    paths = {
-      "/path1" = {
-        get = {
-          x-amazon-apigateway-integration = {
-            httpMethod           = "GET"
-            payloadFormatVersion = "1.0"
-            type                 = "HTTP_PROXY"
-            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
-          }
-        }
-      }
-    }
-  })
-
-  name = "example"
+resource "aws_api_gateway_rest_api" "news_api" {
+  name = "newspaper"
+#   disable_execute_api_endpoint = true
 
   endpoint_configuration {
     types = ["REGIONAL"]
   }
 }
 
-resource "aws_api_gateway_deployment" "example" {
-  rest_api_id = aws_api_gateway_rest_api.example.id
+resource "aws_api_gateway_resource" "news" {
+  rest_api_id = aws_api_gateway_rest_api.news_api.id
+  parent_id   = aws_api_gateway_rest_api.news_api.root_resource_id
+  path_part   = "news"
+}
 
+resource "aws_api_gateway_method" "get_news" {
+  rest_api_id   = aws_api_gateway_rest_api.news_api.id
+  resource_id   = aws_api_gateway_resource.news.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "lambda_integration" {
+  rest_api_id = aws_api_gateway_rest_api.news_api.id
+  resource_id = aws_api_gateway_resource.news.id
+  http_method = aws_api_gateway_method.get_news.http_method
+
+  integration_http_method = "GET" 
+  type                   = "AWS_PROXY"
+  uri                    = aws_lambda_function.example.invoke_arn
+}
+
+resource "aws_api_gateway_resource" "newsitem" {
+  rest_api_id = aws_api_gateway_rest_api.news_api.id
+  parent_id   = aws_api_gateway_resource.news.id
+  path_part   = "newsitem"
+}
+
+resource "aws_api_gateway_method" "post_newsitem" {
+  rest_api_id   = aws_api_gateway_rest_api.news_api.id
+  resource_id   = aws_api_gateway_resource.newsitem.id
+  http_method   = "POST"
+  authorization = "NONE"
+}
+
+resource "aws_api_gateway_deployment" "news_deployment" {
+  rest_api_id   = aws_api_gateway_rest_api.news_api.id
   triggers = {
-    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.example.body))
-  }
+    redeployment = sha1(jsonencode([
+        aws_api_gateway_resource.news,
+        aws_api_gateway_method.get_news,
+        aws_api_gateway_resource.newsitem,
+        aws_api_gateway_method.post_newsitem,
+        aws_api_gateway_stage.dev,
+        aws_api_gateway_rest_api.news_api
+    ]))
+    }
+  stage_name    = var.stage_name
 
   lifecycle {
     create_before_destroy = true
   }
 }
 
-resource "aws_api_gateway_stage" "example" {
-  deployment_id = aws_api_gateway_deployment.example.id
-  rest_api_id   = aws_api_gateway_rest_api.example.id
-  stage_name    = "example"
+
+resource "aws_api_gateway_stage" "dev" {
+  deployment_id = aws_api_gateway_deployment.news_deployment.id
+  rest_api_id   = aws_api_gateway_rest_api.news_api.id
+  stage_name    = var.stage_name
 }
