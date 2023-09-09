@@ -30,7 +30,7 @@ jobs:
           working_directory: ""
           tfsec_formats: sarif
           tfsec_args: --concise-output --no-ignores --force-all-dirs --minimum-severity HIGH
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TFSEC_GITHUB_TOKEN }}
 
   plan:
     name: Pull Request Plan
