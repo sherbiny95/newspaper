@@ -9,7 +9,7 @@ resource "aws_cloudfront_distribution" "news" {
   origin {
     domain_name              = module.s3_react_app.s3_bucket_bucket_regional_domain_name
     origin_id                = module.s3_react_app.s3_bucket_id
-    origin_access_control_id = aws_cloudfront_origin_access_control.portal.id
+    origin_access_control_id = aws_cloudfront_origin_access_control.news.id
   }
   enabled         = true
   price_class         = "PriceClass_100"
