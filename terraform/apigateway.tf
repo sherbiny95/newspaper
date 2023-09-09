@@ -20,14 +20,14 @@ resource "aws_api_gateway_method" "get_news" {
   authorization = "NONE"
 }
 
-resource "aws_api_gateway_integration" "lambda_integration" {
+resource "aws_api_gateway_integration" "news_lambda_integration" {
   rest_api_id = aws_api_gateway_rest_api.news_api.id
   resource_id = aws_api_gateway_resource.news.id
   http_method = aws_api_gateway_method.get_news.http_method
 
   integration_http_method = "GET" 
   type                   = "AWS_PROXY"
-  uri                    = aws_lambda_function.example.invoke_arn
+  uri                    = module.lambda_news.lambda_function_invoke_arn
 }
 
 resource "aws_api_gateway_resource" "newsitem" {
@@ -41,6 +41,16 @@ resource "aws_api_gateway_method" "post_newsitem" {
   resource_id   = aws_api_gateway_resource.newsitem.id
   http_method   = "POST"
   authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "new_itemlambda_integration" {
+  rest_api_id = aws_api_gateway_rest_api.news_api.id
+  resource_id = aws_api_gateway_resource.newsitem.id
+  http_method = aws_api_gateway_method.post_newsitem.http_method
+
+  integration_http_method = "POST" 
+  type                   = "AWS_PROXY"
+  uri                    = module.lambda_news.lambda_function_invoke_arn
 }
 
 resource "aws_api_gateway_deployment" "news_deployment" {

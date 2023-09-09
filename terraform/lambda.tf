@@ -25,12 +25,9 @@ module "lambda_news" {
   attach_network_policy = true
   attach_policy_jsons   = true
   policy_jsons = [
-    data.aws_iam_policy_document.cube_lambda.json
+    data.aws_iam_policy_document.news_lambda.json
   ]
   number_of_policy_jsons = 1
-
-  vpc_security_group_ids = [module.vpc.default_security_group_id]
-  vpc_subnet_ids         = module.vpc.private_subnets
 }
 
 resource "aws_lambda_permission" "invoke_lambda_api" {
