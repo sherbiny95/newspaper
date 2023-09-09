@@ -10,8 +10,8 @@ module "lambda_news" {
 
   function_name  = "news"
   role_name      = "news"
-  handler       = "index.lambda_handler"
-  runtime       = "python3.8"
+  handler        = "index.lambda_handler"
+  runtime        = "python3.8"
   create_package = false
   store_on_s3    = false
   publish        = true
@@ -19,7 +19,7 @@ module "lambda_news" {
   environment_variables = {
     DYNAMODB_TABLE = aws_dynamodb_table.newspaper_articles.id
   }
-  
+
   local_existing_package = data.archive_file.python_build.output_path
 
   attach_network_policy = true
