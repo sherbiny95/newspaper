@@ -63,11 +63,6 @@ resource "aws_api_gateway_integration_response" "news_lambda_integration_respons
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
-  #   response_parameters = {
-  #     "method.response.header.Access-Control-Allow-Origin"  = "'*'",
-  #     "method.response.header.Access-Control-Allow-Methods" = "'*'",
-  #     "method.response.header.Access-Control-Allow-Headers" = "'*'"
-  #   }
 }
 
 # CORS
@@ -118,11 +113,6 @@ resource "aws_api_gateway_integration_response" "news_cors_integration_response_
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
-  #   response_parameters = {
-  #     "method.response.header.Access-Control-Allow-Origin"  = "'*'",
-  #     "method.response.header.Access-Control-Allow-Methods" = "'*'",
-  #     "method.response.header.Access-Control-Allow-Headers" = "'*'"
-  #   }
 }
 
 ##################
@@ -176,11 +166,6 @@ resource "aws_api_gateway_integration_response" "news_item__lambda_integration_r
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
-  #   response_parameters = {
-  #     "method.response.header.Access-Control-Allow-Origin"  = "'*'",
-  #     "method.response.header.Access-Control-Allow-Methods" = "'*'",
-  #     "method.response.header.Access-Control-Allow-Headers" = "'*'"
-  #   }
 }
 
 # CORS
@@ -231,11 +216,6 @@ resource "aws_api_gateway_integration_response" "newsitem_cors_integration_respo
     "method.response.header.Access-Control-Allow-Methods" = "'GET, POST, DELETE, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
-  #   response_parameters = {
-  #     "method.response.header.Access-Control-Allow-Origin"  = "'*'",
-  #     "method.response.header.Access-Control-Allow-Methods" = "'*'",
-  #     "method.response.header.Access-Control-Allow-Headers" = "'*'"
-  #   }
 }
 
 

@@ -22,8 +22,8 @@ module "s3_react_app" {
     {
       allowed_headers = ["*"]
       allowed_methods = ["GET", "POST", "HEAD", "PUT", "DELETE"]
-      #   allowed_origins = ["https://${aws_cloudfront_distribution.news.domain_name}"]
-      allowed_origins = ["*"]
+      allowed_origins = ["https://${aws_cloudfront_distribution.news.domain_name}"]
+    #   allowed_origins = ["*"]
       expose_headers  = []
       max_age_seconds = 3600
     }
