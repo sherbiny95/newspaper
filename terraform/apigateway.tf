@@ -1,16 +1,15 @@
 resource "aws_api_gateway_rest_api" "news_api" {
   name = "newspaper"
-  #   disable_execute_api_endpoint = true
 
   endpoint_configuration {
     types = ["REGIONAL"]
   }
 }
 
-# resource "aws_api_gateway_rest_api_policy" "news_api" {
-#   rest_api_id = aws_api_gateway_rest_api.news_api.id
-#   policy      = data.aws_iam_policy_document.api.json
-# }
+resource "aws_api_gateway_rest_api_policy" "news_api" {
+  rest_api_id = aws_api_gateway_rest_api.news_api.id
+  policy      = data.aws_iam_policy_document.api.json
+}
 
 #############
 # GET /news #
