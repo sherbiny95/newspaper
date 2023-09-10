@@ -1,11 +1,11 @@
 import json
-from unittest.mock import Mock
-import lambda_news
 import pytest
-import os 
+import sys
+import os
+from botocore.stub import Stubber
 
-
-os.environ['AWS_DEFAULT_REGION'] = 'eu-west-1' 
+sys.path.append('../lambda-news')
+import lambda_news
 
 @pytest.fixture
 def lambda_event():
@@ -19,11 +19,10 @@ def test_get_news(lambda_event):
         'Items': [{'Title': 'NewsGet', 'date': '2023-09-10', 'description': 'stuff'}]
     }
 
-    lambda_news.dynamodb = Mock()
-    lambda_news.table = Mock()
-    lambda_news.table.scan.return_value = dynamodb_response
+    with Stubber(lambda_news.dynamodb.meta.client) as stubber:
+        stubber.add_response('scan', dynamodb_response)
 
-    response = lambda_news.lambda_handler(lambda_event, None)
+        response = lambda_news.lambda_handler(lambda_event, None)
 
     assert response['statusCode'] == 200
     assert 'NewsGet' in response['body']
