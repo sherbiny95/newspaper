@@ -68,18 +68,3 @@ data "aws_iam_policy_document" "s3_react_app" {
     }
   }
 }
-
-data "aws_iam_policy_document" "api" {
-  statement {
-    effect = "Allow"
-
-    actions   = ["execute-api:Invoke"]
-    resources = [aws_api_gateway_rest_api.news_api.execution_arn]
-
-    condition {
-      test     = "StringEquals"
-      variable = "aws:UserAgent"
-      values   = ["Amazon CloudFront"]
-    }
-  }
-}
