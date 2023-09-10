@@ -18,15 +18,15 @@ module "s3_react_app" {
     error_document = "index.html"
   }
   
-  cors_rule = [
-    {
-      allowed_headers = ["*"]
-      allowed_methods = ["GET", "POST"]
-      allowed_origins = ["https://${module.s3_react_app.s3_bucket_bucket_regional_domain_name}"]
-      expose_headers  = []
-      max_age_seconds = 3600
-    }
-  ]
+#   cors_rule = [
+#     {
+#       allowed_headers = ["*"]
+#       allowed_methods = ["GET", "POST"]
+#       allowed_origins = ["https://${module.s3_react_app.s3_bucket_bucket_regional_domain_name}"]
+#       expose_headers  = []
+#       max_age_seconds = 3600
+#     }
+#   ]
   attach_policy = false
 }
 

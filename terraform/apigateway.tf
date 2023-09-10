@@ -58,10 +58,15 @@ resource "aws_api_gateway_integration_response" "news_lambda_integration_respons
   http_method = aws_api_gateway_method.get_news.http_method
   status_code = 200
 
+#   response_parameters = {
+#     "method.response.header.Access-Control-Allow-Origin"  = "'${module.s3_react_app.s3_bucket_bucket_regional_domain_name}'",
+#     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
+#     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+#   }
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'https://${aws_cloudfront_distribution.news.domain_name}'",
-    "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
-    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
+    "method.response.header.Access-Control-Allow-Methods" = "*",
+    "method.response.header.Access-Control-Allow-Headers" = "*"
   }
 }
 
@@ -108,10 +113,15 @@ resource "aws_api_gateway_integration_response" "news_cors_integration_response_
   http_method = aws_api_gateway_method.news_cors_options.http_method
   status_code = 200
 
+#   response_parameters = {
+#     "method.response.header.Access-Control-Allow-Origin"  = "'https://${aws_cloudfront_distribution.news.domain_name}'",
+#     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
+#     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+#   }
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'https://${aws_cloudfront_distribution.news.domain_name}'",
-    "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
-    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
+    "method.response.header.Access-Control-Allow-Methods" = "*",
+    "method.response.header.Access-Control-Allow-Headers" = "*"
   }
 }
 
@@ -161,10 +171,15 @@ resource "aws_api_gateway_integration_response" "news_item__lambda_integration_r
   http_method = aws_api_gateway_method.post_newsitem.http_method
   status_code = 200
 
+#   response_parameters = {
+#     "method.response.header.Access-Control-Allow-Origin"  = "'https://${aws_cloudfront_distribution.news.domain_name}'",
+#     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
+#     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+#   }
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'https://${aws_cloudfront_distribution.news.domain_name}'",
-    "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
-    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
+    "method.response.header.Access-Control-Allow-Methods" = "*",
+    "method.response.header.Access-Control-Allow-Headers" = "*"
   }
 }
 
@@ -211,10 +226,15 @@ resource "aws_api_gateway_integration_response" "newsitem_cors_integration_respo
   http_method = aws_api_gateway_method.newsitem_cors_options.http_method
   status_code = 200
 
+#   response_parameters = {
+#     "method.response.header.Access-Control-Allow-Origin"  = "'https://${aws_cloudfront_distribution.news.domain_name}'",
+#     "method.response.header.Access-Control-Allow-Methods" = "'GET, POST, DELETE, HEAD, OPTIONS'",
+#     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+#   }
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'https://${aws_cloudfront_distribution.news.domain_name}'",
-    "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
-    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
+    "method.response.header.Access-Control-Allow-Methods" = "*",
+    "method.response.header.Access-Control-Allow-Headers" = "*"
   }
 }
 
