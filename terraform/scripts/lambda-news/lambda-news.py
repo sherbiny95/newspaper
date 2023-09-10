@@ -49,7 +49,7 @@ def post_news(body):
         
         if 'Item' in existing_title:
             return {
-                'statusCode': 409,
+                'statusCode': 200,
                 "headers": {
                     "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
