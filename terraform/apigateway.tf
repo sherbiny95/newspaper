@@ -31,7 +31,7 @@ resource "aws_api_gateway_method_response" "get_news_response_200" {
   status_code = "200"
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = true,
+    "method.response.header.Access-Control-Allow-Origin"  = module.s3_react_app.s3_bucket_bucket_regional_domain_name,
     "method.response.header.Access-Control-Allow-Methods" = true,
     "method.response.header.Access-Control-Allow-Headers" = true
   }
@@ -134,7 +134,7 @@ resource "aws_api_gateway_method_response" "post_newsitem_response_200" {
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = true,
+    "method.response.header.Access-Control-Allow-Origin"  = module.s3_react_app.s3_bucket_bucket_regional_domain_name,
     "method.response.header.Access-Control-Allow-Methods" = true,
     "method.response.header.Access-Control-Allow-Headers" = true
   }
