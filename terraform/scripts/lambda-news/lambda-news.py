@@ -4,7 +4,8 @@ import os
 from botocore.exceptions import ClientError
 
 dynamodb = boto3.resource('dynamodb')
-table_name = os.environ['DYNAMODB_TABLE'] 
+table_name = os.environ['DYNAMODB_TABLE']
+cloudfront_domain = os.environ['CLOUDFRONT_DOMAIN'] 
 table = dynamodb.Table(table_name)
 
 def get_news():
@@ -14,7 +15,7 @@ def get_news():
         return {
             'statusCode': 200,
             "headers": {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": cloudfront_domain,
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
         },
@@ -24,7 +25,7 @@ def get_news():
         return {
             'statusCode': 500,
             "headers": {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": cloudfront_domain,
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
         },
@@ -38,7 +39,7 @@ def post_news(body):
             return {
                 'statusCode': 400,
                 "headers": {
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": cloudfront_domain,
                     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                     "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
             },
@@ -51,7 +52,7 @@ def post_news(body):
             return {
                 'statusCode': 200,
                 "headers": {
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": cloudfront_domain,
                     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                     "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
                 },
@@ -63,7 +64,7 @@ def post_news(body):
         return {
             'statusCode': 201,
             "headers": {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": cloudfront_domain,
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
         },            
@@ -73,7 +74,7 @@ def post_news(body):
         return {
             'statusCode': 500,
             "headers": {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": cloudfront_domain,
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
         },
@@ -92,7 +93,7 @@ def lambda_handler(event, context):
         return {
             'statusCode': 404,
             "headers": {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": cloudfront_domain,
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
         },
