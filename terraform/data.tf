@@ -74,7 +74,7 @@ data "aws_iam_policy_document" "api" {
     }
 
     actions   = ["execute-api:Invoke"]
-    resources = [aws_api_gateway_rest_api.test.execution_arn]
+    resources = [aws_api_gateway_rest_api.news_api.execution_arn]
 
     condition {
       test     = "StringEquals"
