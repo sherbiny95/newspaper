@@ -73,31 +73,13 @@ data "aws_iam_policy_document" "api" {
   statement {
     effect = "Allow"
 
-    principals {
-      type        = "Service"
-      identifiers = ["s3.amazonaws.com"]
-    }
-
     actions   = ["execute-api:Invoke"]
     resources = [aws_api_gateway_rest_api.news_api.execution_arn]
 
     condition {
       test     = "StringEquals"
-      variable = "aws:SourceArn"
-      values   = [module.s3_react_app.s3_bucket_arn]
-    }
-  }
-
-  statement {
-    effect = "Deny"
-    
-    actions   = ["execute-api:Invoke"]
-    resources = [aws_api_gateway_rest_api.news_api.execution_arn]
-
-    condition {
-      test     = "StringNotEquals"
-      variable = "aws:SourceArn"
-      values   = [module.s3_react_app.s3_bucket_arn]
+      variable = "aws:UserAgent"
+      values   = ["Amazon CloudFront"]
     }
   }
 }
