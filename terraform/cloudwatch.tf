@@ -42,11 +42,15 @@ resource "aws_cloudwatch_dashboard" "main" {
               "Stage",
               "${var.stage_name}",
               "Resource",
-              "/news"
+              "/news",
+              "Method",
+              "GET",
+              "Integration",
+              "Success"
             ]
           ]
           period = 300
-          stat   = "Average"
+          stat   = "Sum"
           region = "eu-west-1"
           title  = "GET Requests to /news"
         }
@@ -68,11 +72,15 @@ resource "aws_cloudwatch_dashboard" "main" {
               "Stage",
               "${var.stage_name}",
               "Resource",
-              "/newsitem"
+              "/newsitem",
+              "Method",
+              "POST",
+              "Integration",
+              "Success"
             ]
           ]
           period = 300
-          stat   = "Average"
+          stat   = "Sum"
           region = "eu-west-1"
           title  = "POST Requests to /newsitem"
         }
