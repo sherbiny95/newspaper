@@ -15,6 +15,30 @@ env:
   AWS_REGION : "eu-west-1"
 
 jobs:
+  unittest:
+    name: unittest
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform/scripts
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: |
+          python -m unittest discover -v
+
   tfsec:
     name: tfsec
     runs-on: ubuntu-latest

@@ -30,8 +30,8 @@ resource "aws_api_gateway_method" "get_news" {
 
 resource "aws_api_gateway_method_settings" "get_news" {
   rest_api_id = aws_api_gateway_rest_api.news_api.id
-  stage_name  = aws_api_gateway_stage.example.stage_name
-  method_path = "path1/GET"
+  stage_name  = var.stage_name
+  method_path = "news/GET"
 
   settings {
     metrics_enabled = true
@@ -140,6 +140,17 @@ resource "aws_api_gateway_method" "post_newsitem" {
   resource_id   = aws_api_gateway_resource.newsitem.id
   http_method   = "POST"
   authorization = "NONE"
+}
+
+resource "aws_api_gateway_method_settings" "get_news" {
+  rest_api_id = aws_api_gateway_rest_api.news_api.id
+  stage_name  = var.stage_name
+  method_path = "news/GET"
+
+  settings {
+    metrics_enabled = true
+    logging_level   = "INFO"
+  }
 }
 
 resource "aws_api_gateway_method_response" "post_newsitem_response_200" {
