@@ -13,11 +13,21 @@ def get_news():
         items = response.get('Items', [])
         return {
             'statusCode': 200,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
+        },
             'body': json.dumps(items)
         }
     except ClientError as e:
         return {
             'statusCode': 500,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
+        },
             'body': json.dumps('Internal Server Error')
         }
 
@@ -27,6 +37,11 @@ def post_news(body):
         if 'date' not in news_item or 'Title' not in news_item or 'description' not in news_item:
             return {
                 'statusCode': 400,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
+            },
                 'body': json.dumps('Invalid JSON format')
             }
         
@@ -34,11 +49,21 @@ def post_news(body):
         
         return {
             'statusCode': 201,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
+        },            
             'body': json.dumps('News item added')
         }
     except (ClientError, ValueError) as e:
         return {
             'statusCode': 500,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
+        },
             'body': json.dumps('Internal Server Error')
         }
     
@@ -53,5 +78,10 @@ def lambda_handler(event, context):
     else:
         return {
             'statusCode': 404,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
+        },
             'body': json.dumps('Method and Path combination not found')
         }
