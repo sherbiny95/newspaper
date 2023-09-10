@@ -10,7 +10,7 @@ module "lambda_news" {
 
   function_name  = "news"
   role_name      = "news"
-  handler        = "index.lambda_handler"
+  handler        = "lambda_news.lambda_handler"
   runtime        = "python3.8"
   create_package = false
   store_on_s3    = false
@@ -18,6 +18,7 @@ module "lambda_news" {
 
   environment_variables = {
     DYNAMODB_TABLE = aws_dynamodb_table.newspaper_articles.id
+    CLOUDFRONT_DOMAIN = "https://${aws_cloudfront_distribution.news.domain_name}"
   }
 
   local_existing_package = data.archive_file.python_build.output_path
