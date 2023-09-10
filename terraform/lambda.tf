@@ -10,7 +10,7 @@ module "lambda_news" {
 
   function_name  = "news"
   role_name      = "news"
-  handler        = "lambda-news.lambda_handler"
+  handler        = "lambda_news.lambda_handler"
   runtime        = "python3.8"
   create_package = false
   store_on_s3    = false
