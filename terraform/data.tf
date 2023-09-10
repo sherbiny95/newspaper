@@ -79,7 +79,7 @@ data "aws_iam_policy_document" "api" {
     condition {
       test     = "StringEquals"
       variable = "aws:SourceArn"
-      values   = [module.module.s3_react_app.s3_bucket_arn]
+      values   = [module.s3_react_app.s3_bucket_arn]
     }
   }
 }
