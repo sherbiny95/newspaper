@@ -1,1 +1,3 @@
 # newspaper
+
+![Label](newspapers.svg)
