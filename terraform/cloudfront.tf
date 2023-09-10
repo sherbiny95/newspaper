@@ -10,10 +10,6 @@ resource "aws_cloudfront_distribution" "news" {
     domain_name              = module.s3_react_app.s3_bucket_bucket_regional_domain_name
     origin_id                = module.s3_react_app.s3_bucket_id
     origin_access_control_id = aws_cloudfront_origin_access_control.news.id
-    custom_header {
-      name  = "x-api-key"
-      value = aws_api_gateway_api_key.news.value
-    }
   }
   enabled             = true
   default_root_object = "index.html"
