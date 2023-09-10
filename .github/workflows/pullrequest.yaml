@@ -34,6 +34,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pytest
+          pip install boto3
 
       - name: Run unit tests
         run: |
