@@ -24,6 +24,8 @@ const App = () => {
       setError('Please fill in all fields.');
       return;
     }
+    setError('');
+  
     const response = await fetch('https://y15bdx7eij.execute-api.eu-west-1.amazonaws.com/dev/newsitem', {
       method: 'POST',
     body: JSON.stringify({
