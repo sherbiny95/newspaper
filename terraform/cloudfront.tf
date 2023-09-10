@@ -45,7 +45,8 @@ resource "aws_cloudfront_distribution" "news" {
     geo_restriction {
       locations = [
         "NL",
-        "US"
+        "US",
+        "AT"
       ]
       restriction_type = "whitelist"
     }

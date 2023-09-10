@@ -7,6 +7,11 @@ resource "aws_api_gateway_rest_api" "news_api" {
   }
 }
 
+resource "aws_api_gateway_rest_api_policy" "news_api" {
+  rest_api_id = aws_api_gateway_rest_api.news_api.id
+  policy      = data.aws_iam_policy_document.api.json
+}
+
 #############
 # GET /news #
 #############
