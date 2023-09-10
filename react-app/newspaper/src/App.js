@@ -39,7 +39,7 @@ const App = () => {
       setResponse(result || []);
     }else {
       const errorResponse = await response.json();
-      const errorMessage = errorResponse.error;
+      const errorMessage = errorResponse.body;
       setError(errorMessage);
     }
   };
