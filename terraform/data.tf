@@ -82,4 +82,17 @@ data "aws_iam_policy_document" "api" {
       values   = [module.s3_react_app.s3_bucket_arn]
     }
   }
+  
+  statement {
+    effect = "Deny"
+    
+    actions   = ["execute-api:Invoke"]
+    resources = [aws_api_gateway_rest_api.news_api.execution_arn]
+
+    condition {
+      test     = "StringNotEquals"
+      variable = "aws:SourceArn"
+      values   = [module.s3_react_app.s3_bucket_arn]
+    }
+  }
 }
