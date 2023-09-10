@@ -66,19 +66,6 @@ data "aws_iam_policy_document" "s3_react_app" {
 
 data "aws_iam_policy_document" "api" {
   statement {
-    effect = "Allow"
-
-    actions   = ["execute-api:Invoke"]
-    resources = [aws_api_gateway_rest_api.news_api.execution_arn]
-
-    condition {
-      test     = "StringEquals"
-      variable = "aws:SourceArn"
-      values   = [module.s3_react_app.s3_bucket_arn]
-    }
-  }
-  
-  statement {
     effect = "Deny"
     
     actions   = ["execute-api:Invoke"]
