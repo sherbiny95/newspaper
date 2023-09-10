@@ -4,7 +4,7 @@ import sys
 import os
 from botocore.stub import Stubber
 
-sys.path.append('../lambda-news')
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'lambda-news')))
 import lambda_news
 
 @pytest.fixture
