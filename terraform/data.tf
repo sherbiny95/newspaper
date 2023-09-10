@@ -68,11 +68,6 @@ data "aws_iam_policy_document" "api" {
   statement {
     effect = "Allow"
 
-    principals {
-      type        = "Service"
-      identifiers = ["s3.amazonaws.com"]
-    }
-
     actions   = ["execute-api:Invoke"]
     resources = [aws_api_gateway_rest_api.news_api.execution_arn]
 
