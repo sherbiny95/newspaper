@@ -21,7 +21,7 @@ module "s3_react_app" {
   cors_rule = [
     {
       allowed_headers = ["*"]
-      allowed_methods = ["GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE"]
+      allowed_methods = ["GET", "POST", "HEAD", "PUT", "DELETE"]
       #   allowed_origins = ["https://${aws_cloudfront_distribution.news.domain_name}"]
       allowed_origins = ["*"]
       expose_headers  = []
