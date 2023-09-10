@@ -59,7 +59,7 @@ resource "aws_api_gateway_integration_response" "news_lambda_integration_respons
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
+    "method.response.header.Access-Control-Allow-Origin"  = "'${module.s3_react_app.s3_bucket_bucket_regional_domain_name}'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
@@ -109,7 +109,7 @@ resource "aws_api_gateway_integration_response" "news_cors_integration_response_
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
+    "method.response.header.Access-Control-Allow-Origin"  = "${module.s3_react_app.s3_bucket_bucket_regional_domain_name}",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
@@ -162,9 +162,9 @@ resource "aws_api_gateway_integration_response" "news_item__lambda_integration_r
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
+    "method.response.header.Access-Control-Allow-Origin"  = "${module.s3_react_app.s3_bucket_bucket_regional_domain_name}",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
-    "method.response.header.Access-Control-Allow-Headers" = "'*'"
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
 }
 
@@ -212,9 +212,9 @@ resource "aws_api_gateway_integration_response" "newsitem_cors_integration_respo
   status_code = 200
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'*'",
+    "method.response.header.Access-Control-Allow-Origin"  = "'${module.s3_react_app.s3_bucket_bucket_regional_domain_name}'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET, HEAD, OPTIONS'",
-    "method.response.header.Access-Control-Allow-Headers" = "'*'"
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
 }
 

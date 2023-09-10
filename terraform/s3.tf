@@ -22,7 +22,7 @@ module "s3_react_app" {
     {
       allowed_headers = ["*"]
       allowed_methods = ["GET", "POST"]
-      allowed_origins = ["https://${module.s3_react_app.s3_bucket_bucket_regional_domain_name	}"]
+      allowed_origins = ["https://${module.s3_react_app.s3_bucket_bucket_regional_domain_name}"]
       expose_headers  = []
       max_age_seconds = 3600
     }
