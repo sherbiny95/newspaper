@@ -20,7 +20,7 @@ resource "aws_api_gateway_method" "get_news" {
   rest_api_id   = aws_api_gateway_rest_api.news_api.id
   resource_id   = aws_api_gateway_resource.news.id
   http_method   = "GET"
-  authorization = "API_KEY"
+  authorization = "NONE"
 }
 
 resource "aws_api_gateway_method_settings" "get_news" {
@@ -134,7 +134,7 @@ resource "aws_api_gateway_method" "post_newsitem" {
   rest_api_id   = aws_api_gateway_rest_api.news_api.id
   resource_id   = aws_api_gateway_resource.newsitem.id
   http_method   = "POST"
-  authorization = "API_KEY"
+  authorization = "NONE"
 }
 
 resource "aws_api_gateway_method_settings" "post_newsitem" {
@@ -278,21 +278,4 @@ resource "aws_api_gateway_stage" "dev" {
 
 resource "aws_api_gateway_account" "logging" {
   cloudwatch_role_arn = aws_iam_role.api_cloudwatch.arn
-}
-
-#######
-# Key #
-#######
-resource "aws_api_gateway_api_key" "news" {
-  name = "react-app-key"
-}
-
-resource "aws_api_gateway_usage_plan" "news" {
-  name        = "react-usage-plan"
-}
-
-resource "aws_api_gateway_usage_plan_key" "news" {
-  key_id        = aws_api_gateway_api_key.news.id
-  key_type      = "API_KEY"
-  usage_plan_id = aws_api_gateway_usage_plan.news.id
 }
