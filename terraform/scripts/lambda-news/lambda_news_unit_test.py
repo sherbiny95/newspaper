@@ -2,6 +2,10 @@ import json
 from unittest.mock import Mock
 import lambda_news
 import pytest
+import os 
+
+
+os.environ['AWS_DEFAULT_REGION'] = 'eu-west-1' 
 
 @pytest.fixture
 def lambda_event():
