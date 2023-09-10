@@ -69,7 +69,7 @@ data "aws_iam_policy_document" "s3_react_app" {
   }
 }
 
-resource "aws_iam_policy_document" "api" {
+data "aws_iam_policy_document" "api" {
   statement {
     effect = "Allow"
 
