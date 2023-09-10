@@ -65,8 +65,8 @@ resource "aws_api_gateway_integration_response" "news_lambda_integration_respons
 #   }
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin"  = "'*'",
-    "method.response.header.Access-Control-Allow-Methods" = "*",
-    "method.response.header.Access-Control-Allow-Headers" = "*"
+    "method.response.header.Access-Control-Allow-Methods" = "'*'",
+    "method.response.header.Access-Control-Allow-Headers" = "'*'"
   }
 }
 
@@ -120,8 +120,8 @@ resource "aws_api_gateway_integration_response" "news_cors_integration_response_
 #   }
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin"  = "'*'",
-    "method.response.header.Access-Control-Allow-Methods" = "*",
-    "method.response.header.Access-Control-Allow-Headers" = "*"
+    "method.response.header.Access-Control-Allow-Methods" = "'*'",
+    "method.response.header.Access-Control-Allow-Headers" = "'*'"
   }
 }
 
@@ -178,8 +178,8 @@ resource "aws_api_gateway_integration_response" "news_item__lambda_integration_r
 #   }
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin"  = "'*'",
-    "method.response.header.Access-Control-Allow-Methods" = "*",
-    "method.response.header.Access-Control-Allow-Headers" = "*"
+    "method.response.header.Access-Control-Allow-Methods" = "'*'",
+    "method.response.header.Access-Control-Allow-Headers" = "'*'"
   }
 }
 
@@ -233,8 +233,8 @@ resource "aws_api_gateway_integration_response" "newsitem_cors_integration_respo
 #   }
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin"  = "'*'",
-    "method.response.header.Access-Control-Allow-Methods" = "*",
-    "method.response.header.Access-Control-Allow-Headers" = "*"
+    "method.response.header.Access-Control-Allow-Methods" = "'*'",
+    "method.response.header.Access-Control-Allow-Headers" = "'*'"
   }
 }
 
