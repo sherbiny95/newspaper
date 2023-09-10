@@ -11,9 +11,9 @@ resource "aws_cloudfront_distribution" "news" {
     origin_id                = module.s3_react_app.s3_bucket_id
     origin_access_control_id = aws_cloudfront_origin_access_control.news.id
   }
-  enabled     = true
+  enabled             = true
   default_root_object = "index.html"
-  price_class = "PriceClass_100"
+  price_class         = "PriceClass_100"
 
 
   default_cache_behavior {
