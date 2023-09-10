@@ -41,6 +41,11 @@ data "aws_iam_policy_document" "cloudwatch" {
       "logs:PutLogEvents",
       "logs:GetLogEvents",
       "logs:FilterLogEvents",
+      "cloudwatch:PutMetricData",
+      "cloudwatch:GetMetricStatistics",
+      "cloudwatch:ListMetrics",
+      "cloudwatch:GetDashboard",
+      "cloudwatch:ListDashboards", 
     ]
 
     resources = ["*"]
