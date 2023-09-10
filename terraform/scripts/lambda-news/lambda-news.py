@@ -45,6 +45,19 @@ def post_news(body):
                 'body': json.dumps('Invalid JSON format')
             }
         
+        existing_title = table.get_item(Key={'Title': news_item['Title']})
+        
+        if 'Item' in existing_title:
+            return {
+                'statusCode': 409,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token",
+                },
+                'body': json.dumps('Title already exists. Choose a different unique title.')
+            }
+
         table.put_item(Item=news_item)
         
         return {
