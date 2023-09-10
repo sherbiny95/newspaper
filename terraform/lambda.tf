@@ -1,7 +1,7 @@
 data "archive_file" "python_build" {
   type        = "zip"
-  source_dir  = "${path.module}/scripts/lambda-news"
-  output_path = "${path.module}/scripts/lambda-news.zip"
+  source_dir  = "${path.module}/scripts/lambda_news"
+  output_path = "${path.module}/scripts/lambda_news.zip"
 }
 
 module "lambda_news" {
@@ -10,7 +10,7 @@ module "lambda_news" {
 
   function_name  = "news"
   role_name      = "news"
-  handler        = "lambda-news.lambda_handler"
+  handler        = "lambda_news.lambda_handler"
   runtime        = "python3.8"
   create_package = false
   store_on_s3    = false
