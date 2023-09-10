@@ -142,10 +142,10 @@ resource "aws_api_gateway_method" "post_newsitem" {
   authorization = "NONE"
 }
 
-resource "aws_api_gateway_method_settings" "get_news" {
+resource "aws_api_gateway_method_settings" "post_newsitem" {
   rest_api_id = aws_api_gateway_rest_api.news_api.id
   stage_name  = var.stage_name
-  method_path = "news/GET"
+  method_path = "newsitem/POST"
 
   settings {
     metrics_enabled = true
